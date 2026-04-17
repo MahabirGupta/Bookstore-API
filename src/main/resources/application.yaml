@@ -2,29 +2,28 @@ spring:
   application:
     name: bookstore
 
-    server:
-      port: 8080
+  datasource:
+    url: jdbc:h2:mem:bookstoredb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
 
-    spring:
-      datasource:
-        url: jdbc:h2:mem:bookstoredb
-        driver-class-name: org.h2.Driver
-        username: sa
-        password:
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
 
-      h2:
-        console:
-          enabled: true
-          path: /h2-console
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
 
-      jpa:
-        hibernate:
-          ddl-auto: update
-        show-sql: true
-        properties:
-          hibernate:
-            format_sql: true
+  jackson:
+    serialization:
+      indent-output: true
 
-      jackson:
-        serialization:
-          indent-output: true
+server:
+  port: 8080

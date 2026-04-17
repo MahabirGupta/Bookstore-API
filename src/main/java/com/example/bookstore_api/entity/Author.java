@@ -1,10 +1,8 @@
 package com.example.bookstore_api.entity;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
-import java.awt.print.Book;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Objects;
@@ -12,14 +10,13 @@ import java.util.Set;
 
 @Entity
 @Table(
-        name = "authors", //name of table
+        name = "authors",
         uniqueConstraints = {
                 @UniqueConstraint(columnNames = {"name", "birthday"})
         }
 )
 public class Author {
 
-//    Generate Primary Key
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
