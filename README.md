@@ -4,6 +4,18 @@ A Spring Boot RESTful API for managing books and authors with authentication, va
 
 ---
 
+## Tech Stack
+
+- Java 17
+- Spring Boot
+- Spring Data JPA
+- Spring Security
+- Hibernate Validator
+- H2 Database
+- Maven
+
+---
+
 ##  Features
 
 * Add, update, delete books
@@ -13,6 +25,19 @@ A Spring Boot RESTful API for managing books and authors with authentication, va
 * Role-based security (USER / ADMIN)
 * H2 in-memory database
 * REST API (no UI)
+
+---
+
+##  Project Structure
+
+com.example.bookstore_api
+├── config # Security & Data Loader
+├── controller # REST Controllers
+├── dto # Request DTOs
+├── entity # JPA Entities
+├── exception # Custom Exceptions & Handler
+├── repository # JPA Repositories
+├── service # Business Logic
 
 ---
 
@@ -88,8 +113,24 @@ http://localhost:8080
 
 **Expected:** 201 Created
 
----
+**Response Example:**
 
+```json
+{
+  "isbn": "9780321356680",
+  "title": "Java Concurrency in Practice",
+  "year": 2006,
+  "price": 49.99,
+  "genre": "Programming",
+  "authors": [
+    {
+      "id": 1,
+      "name": "Brian Goetz",
+      "birthday": "1969-02-19"
+    }
+  ]
+}
+```
 ### 4. Add Duplicate Book
 
 | Field  | Value        |
@@ -130,6 +171,20 @@ http://localhost:8080
 
 **Expected:** 400 Bad Request
 
+**Response Example:**
+
+```json
+{
+  "timestamp": "2026-04-17T22:00:00",
+  "status": 400,
+  "error": "Bad Request",
+  "message": "Validation failed",
+  "details": [
+    "title: Title is required"
+  ],
+  "path": "/api/books"
+}
+```
 ---
 
 ### 6. Update Existing Book
@@ -161,9 +216,24 @@ http://localhost:8080
 | Field  | Value                      |
 | ------ | -------------------------- |
 | Method | PUT                        |
-| URL    | `/api/books/1111111111111` |
+| URL    | `/api/books/9780134685991` |
 | Auth   | USER                       |
 
+```json
+{
+  "isbn": "1111111111111",
+  "title": "Test Book",
+  "authors": [
+    {
+      "name": "Test Author",
+      "birthday": "1980-01-01"
+    }
+  ],
+  "year": 2024,
+  "price": 10.99,
+  "genre": "Test"
+}
+```
 **Expected:** 400 Bad Request
 
 ---
@@ -280,10 +350,12 @@ http://localhost:8080/h2-console
 
 ## How to Run
 
+1. Navigate to project directory
+2. Run:
+
 ```bash
 mvn spring-boot:run
 ```
-
 ---
 
 ##  Notes
