@@ -132,7 +132,7 @@ http://localhost:8080
 
 ---
 
-### 6. Update Book
+### 6. Update Existing Book
 
 | Field  | Value               |
 | ------ | ------------------- |
@@ -264,7 +264,7 @@ http://localhost:8080
 
 ---
 
-## 🗄️ H2 Database Console
+## H2 Database Console
 
 ```
 http://localhost:8080/h2-console
@@ -278,7 +278,7 @@ http://localhost:8080/h2-console
 
 ---
 
-## ⚙️ How to Run
+## How to Run
 
 ```bash
 mvn spring-boot:run
@@ -286,7 +286,7 @@ mvn spring-boot:run
 
 ---
 
-## 🧠 Notes
+##  Notes
 
 * In-memory DB resets on restart
 * DELETE endpoint restricted to ADMIN role
